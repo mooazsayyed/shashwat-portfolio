@@ -8,32 +8,32 @@ const ContactSection: React.FC = () => {
     email: '',
     message: ''
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
-  
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate API call
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
       setFormData({ name: '', email: '', message: '' });
-      
+
       // Reset success message after 5 seconds
       setTimeout(() => {
         setSubmitted(false);
       }, 5000);
     }, 1500);
   };
-  
+
   return (
     <section id="contact" className="relative py-20 px-4">
       <div className="container mx-auto relative z-10">
@@ -46,10 +46,10 @@ const ContactSection: React.FC = () => {
           </h2>
           <div className="w-16 h-1 bg-neon-green mx-auto mb-8"></div>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-            Ready to collaborate on your next cosmic venture? Send me a transmission!
+            Ready to collaborate on your next  venture? Send me a transmission!
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div className="md:col-span-1 space-y-8">
             <div className="bg-space-light/20 backdrop-blur-sm p-6 rounded-lg border border-white/5 hover:border-neon-blue/30 transition-all duration-300">
@@ -64,26 +64,26 @@ const ContactSection: React.FC = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="bg-space-light/20 backdrop-blur-sm p-6 rounded-lg border border-white/5 hover:border-neon-pink/30 transition-all duration-300">
               <div className="flex items-start">
                 <Phone className="text-neon-pink w-6 h-6 mt-1 mr-4" />
                 <div>
                   <h3 className="text-lg font-medium text-white mb-2">Phone</h3>
-                  <p className="text-gray-400">+1 (555) 123-4567</p>
+                  <p className="text-gray-400">+91 9665398253</p>
                   <a href="tel:+15551234567" className="text-neon-pink hover:text-neon-blue transition-colors duration-300 text-sm">
                     Give me a call
                   </a>
                 </div>
               </div>
             </div>
-            
+
             <div className="bg-space-light/20 backdrop-blur-sm p-6 rounded-lg border border-white/5 hover:border-neon-green/30 transition-all duration-300">
               <div className="flex items-start">
                 <MapPin className="text-neon-green w-6 h-6 mt-1 mr-4" />
                 <div>
                   <h3 className="text-lg font-medium text-white mb-2">Location</h3>
-                  <p className="text-gray-400">Seattle, WA, USA</p>
+                  <p className="text-gray-400">Pune, MH, INDIA</p>
                   <p className="text-neon-green text-sm">
                     Available for remote work
                   </p>
@@ -91,17 +91,17 @@ const ContactSection: React.FC = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="md:col-span-2">
             <form onSubmit={handleSubmit} className="bg-space-light/20 backdrop-blur-sm p-8 rounded-lg border border-white/5">
               <h3 className="text-xl font-heading mb-6 text-white">Send a Message</h3>
-              
+
               {submitted ? (
                 <div className="bg-neon-green/10 border border-neon-green/30 text-neon-green p-4 rounded-md mb-6">
                   Message sent successfully! I'll respond to your transmission shortly.
                 </div>
               ) : null}
-              
+
               <div className="mb-6">
                 <label htmlFor="name" className="block text-gray-300 mb-2">
                   Your Name
@@ -117,7 +117,7 @@ const ContactSection: React.FC = () => {
                   placeholder="Enter your name"
                 />
               </div>
-              
+
               <div className="mb-6">
                 <label htmlFor="email" className="block text-gray-300 mb-2">
                   Your Email
@@ -133,7 +133,7 @@ const ContactSection: React.FC = () => {
                   placeholder="Enter your email"
                 />
               </div>
-              
+
               <div className="mb-6">
                 <label htmlFor="message" className="block text-gray-300 mb-2">
                   Your Message
@@ -149,8 +149,8 @@ const ContactSection: React.FC = () => {
                   placeholder="Your message here..."
                 ></textarea>
               </div>
-              
-              <NeonButton 
+
+              <NeonButton
                 color="green"
                 className="w-full justify-center"
               >
@@ -172,7 +172,7 @@ const ContactSection: React.FC = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Decoration */}
       <div className="absolute w-80 h-80 border border-neon-green/10 rounded-full -right-40 top-20 opacity-20"></div>
     </section>

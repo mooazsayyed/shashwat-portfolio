@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import LoadingScreen from './components/LoadingScreen';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
@@ -9,8 +10,12 @@ import Footer from './components/Footer';
 import ParticleBackground from './components/ParticleBackground';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
-    <div className="relative min-h-screen bg-space text-white font-body overflow-hidden">
+    <>
+      {isLoading && <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />}
+      <div className="relative min-h-screen bg-space text-white font-body overflow-hidden">
       <ParticleBackground />
       <div className="relative z-10">
         <Header />
@@ -24,6 +29,7 @@ function App() {
         <Footer />
       </div>
     </div>
+    </>
   );
 }
 

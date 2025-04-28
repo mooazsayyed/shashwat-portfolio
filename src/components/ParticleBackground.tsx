@@ -37,13 +37,13 @@ const ParticleBackground: React.FC = () => {
       alpha: number;
 
       constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
+        this.x = Math.random() * (canvas?.width ?? window.innerWidth);
+        this.y = Math.random() * (canvas?.height ?? window.innerHeight);
         this.size = Math.random() * 2 + 0.5;
         this.speedX = Math.random() * 0.5 - 0.25;
         this.speedY = Math.random() * 0.5 - 0.25;
         this.alpha = Math.random() * 0.5 + 0.1;
-        
+
         // Random colors - stars or nebulae with different hues
         const colorType = Math.random();
         if (colorType < 0.7) {
@@ -64,7 +64,7 @@ const ParticleBackground: React.FC = () => {
       update() {
         this.x += this.speedX;
         this.y += this.speedY;
-        
+
         // Wrap around edges
         if (this.x < 0) this.x = canvas.width;
         if (this.x > canvas.width) this.x = 0;
@@ -90,21 +90,21 @@ const ParticleBackground: React.FC = () => {
     }
 
     function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
+      ctx.clearRect(0, 0, canvas!.width, canvas!.height);
+
       // Add a subtle gradient background
       const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
       gradient.addColorStop(0, 'rgba(10, 10, 30, 1)');
       gradient.addColorStop(1, 'rgba(20, 5, 40, 1)');
       ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      
+      ctx.fillRect(0, 0, canvas!.width, canvas!.height);
+
       // Update and draw particles
       particlesArray.forEach(particle => {
         particle.update();
         particle.draw();
       });
-      
+
       animationFrameId = requestAnimationFrame(animate);
     }
 
@@ -118,8 +118,8 @@ const ParticleBackground: React.FC = () => {
   }, []);
 
   return (
-    <canvas 
-      ref={canvasRef} 
+    <canvas
+      ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full z-0 bg-space"
     />
   );

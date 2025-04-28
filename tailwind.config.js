@@ -19,6 +19,8 @@ export default {
         'spin-reverse-slow': 'spin 25s linear infinite reverse',
         'blink': 'blink 1s step-end infinite',
         'float': 'float 6s ease-in-out infinite',
+        'spin-slow': 'spin 15s linear infinite',
+        'spin-slower': 'spin 20s linear infinite reverse',
       },
       keyframes: {
         float: {

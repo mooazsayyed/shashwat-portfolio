@@ -10,7 +10,7 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -24,20 +24,19 @@ const Header = () => {
   };
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-space/90 backdrop-blur-md' : 'bg-transparent'
-      }`}
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-space/90 backdrop-blur-md' : 'bg-transparent'
+        }`}
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <a 
-            href="#hero" 
+          <a
+            href="#hero"
             className="text-2xl font-heading text-neon-blue font-bold glitch-text"
             onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }}
           >
             <span className="relative inline-block">
-              &lt;NEON.DEV/&gt;
+              &lt; SHASHWAT.DEV /&gt;
               <span className="absolute -inset-0.5 bg-neon-blue/20 blur opacity-30"></span>
             </span>
           </a>
@@ -61,7 +60,7 @@ const Header = () => {
           </nav>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className="md:hidden text-white"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
@@ -71,9 +70,8 @@ const Header = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden transition-all duration-300 overflow-hidden ${
-        mobileMenuOpen ? 'max-h-96' : 'max-h-0'
-      }`}>
+      <div className={`md:hidden transition-all duration-300 overflow-hidden ${mobileMenuOpen ? 'max-h-96' : 'max-h-0'
+        }`}>
         <nav className="bg-space/95 backdrop-blur-md px-4 py-4 flex flex-col space-y-4 border-t border-neon-blue/30">
           {['about', 'skills', 'projects', 'contact'].map((item) => (
             <a
@@ -85,7 +83,7 @@ const Header = () => {
               {item.charAt(0).toUpperCase() + item.slice(1)}
             </a>
           ))}
-          <NeonButton 
+          <NeonButton
             onClick={() => window.open('/resume.pdf', '_blank')}
             className="w-full justify-center"
           >
