@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --color-neon-blue: 0 240 255;    /* #00f0ff */
+    --color-neon-pink: 255 0 255;    /* #ff00ff */
+    --color-neon-green: 0 255 170;   /* #00ffaa */
+    --color-neon-purple: 170 0 255;  /* #aa00ff */
+    --color-space: 10 12 35;         /* #0a0c23 */
+    --color-space-light: 20 25 65;   /* #141941 */
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    @apply bg-space text-white font-body;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .shooting-star {
+    @apply absolute w-0.5 h-0.5 bg-white;
+    box-shadow: 0 0 5px 1px white;
+    opacity: 1;
+    animation: shooting 1s linear;
+  }
+
+  .hexagon-container {
+    @apply relative w-32 h-28 flex items-center justify-center transition-colors duration-300;
+  }
+
+  .hexagon {
+    @apply relative w-full h-full flex items-center justify-center text-white transition-all duration-300
+           border border-opacity-30 backdrop-blur-sm;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  }
+
+  .hexagon:before {
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    content: '';
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  }
+
+  .hexagon-container:hover .hexagon:before {
+    @apply opacity-100;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .font-body {
+    font-family: 'Open Sans', sans-serif;
+  }
+}
+
+@keyframes border-flow {
+  0%, 100% {
+    clip-path: inset(0 0 98% 0);
+  }
+  25% {
+    clip-path: inset(0 98% 0 0);
+  }
+  50% {
+    clip-path: inset(98% 0 0 0);
+  }
+  75% {
+    clip-path: inset(0 0 0 98%);
+  }
+}
+
+.animate-border-flow:before {
+  animation: border-flow 4s infinite linear;
+}
+
+@keyframes shooting {
+  0% {
+    transform: translate(0, 0) rotate(-45deg) scale(1);
+    opacity: 1;
+    box-shadow: 0 0 5px 1px white;
+  }
+  
+  20% {
+    transform: translate(20vw, 20vh) rotate(-45deg) scale(1.2);
+    opacity: 1;
+    box-shadow: 0 0 10px 2px theme('colors.neon-blue');
+  }
+  
+  100% {
+    transform: translate(50vw, 50vh) rotate(-45deg) scale(0.1);
+    opacity: 0;
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+@keyframes glitch-1 {
+  0% { transform: none; opacity: 0.3; }
+  7% { transform: translate(1px, 3px); opacity: 0.5; }
+  10% { transform: none; opacity: 0.3; }
+  27% { transform: none; opacity: 0.3; }
+  30% { transform: translate(-2px, -3px); opacity: 0.5; }
+  35% { transform: none; opacity: 0.3; }
+  52% { transform: none; opacity: 0.3; }
+  55% { transform: translate(1px, -2px); opacity: 0.5; }
+  50% { transform: none; opacity: 0.3; }
+  72% { transform: none; opacity: 0.3; }
+  75% { transform: translate(-5px, 2px); opacity: 0.5; }
+  80% { transform: none; opacity: 0.3; }
+  100% { transform: none; opacity: 0.3; }
+}
+
+@keyframes glitch-2 {
+  0% { transform: none; opacity: 0.3; }
+  7% { transform: translate(-1px, -3px); opacity: 0.5; }
+  10% { transform: none; opacity: 0.3; }
+  27% { transform: none; opacity: 0.3; }
+  30% { transform: translate(2px, 3px); opacity: 0.5; }
+  35% { transform: none; opacity: 0.3; }
+  52% { transform: none; opacity: 0.3; }
+  55% { transform: translate(-1px, 2px); opacity: 0.5; }
+  50% { transform: none; opacity: 0.3; }
+  72% { transform: none; opacity: 0.3; }
+  75% { transform: translate(5px, -2px); opacity: 0.5; }
+  80% { transform: none; opacity: 0.3; }
+  100% { transform: none; opacity: 0.3; }
+}
+
+.animate-glitch-1 {
+  animation: glitch-1 3s infinite linear;
+}
+
+.animate-glitch-2 {
+  animation: glitch-2 3s infinite linear;
+}
+
+.animate-spin-slow {
+  animation: spin 30s linear infinite;
+}
+
+.animate-spin-reverse-slow {
+  animation: spin 25s linear infinite reverse;
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
