@@ -59,7 +59,7 @@ const HeroSection: React.FC = () => {
       <div className="container mx-auto text-center z-10">
         <div className="mb-4">
           <GlitchText className="text-4xl md:text-6xl font-crazy mb-4">
-            🌌 Hello, I'm Shashwat Agarwal
+            🌌 Hello, I'm <span className="font-heading bg-gradient-to-r from-neon-blue via-neon-pink to-neon-green bg-clip-text text-transparent drop-shadow-[0_0_16px_#00f0ff]">Shashwat Agarwal</span>
           </GlitchText>
 
           <div className="h-16 md:h-24">
@@ -79,14 +79,14 @@ const HeroSection: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <NeonButton
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
               color="blue"
               className="sm:w-auto"
             >
               🚀 Launch My Journey
             </NeonButton>
             <NeonButton
-              onClick={() => document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
               color="pink"
               className="sm:w-auto"
             >
