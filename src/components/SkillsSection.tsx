@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from './MotionWrapper';
+import { IconCloudDemo } from './SkillsIcons';
 
 interface SkillItemProps {
   name: string;
@@ -24,11 +25,12 @@ const SkillItem: React.FC<SkillItemProps> = ({ name, level, color }) => {
           </span>
         </div>
         <div className="h-1.5 bg-gray-700/30 rounded-full overflow-hidden">
-          <motion.div as="div"
+          <motion.div
             className={`h-full rounded-full ${color.replace('text-', 'bg-')} group-hover:animate-pulse`}
             initial={{ width: 0 }}
             animate={{ width: `${level}%` }}
             transition={{ duration: 1, delay: 0.2 }}
+            children={null}
           />
         </div>
       </div>
@@ -73,64 +75,65 @@ const SkillsSection: React.FC = () => {
   return (
     <section id="skills" className="relative py-16 px-4 overflow-hidden">
       <div className="container mx-auto max-w-5xl relative z-10">
-        <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          whileInView={{ opacity: 1, y: 0 }}
-        >
-          <h2 className="text-3xl md:text-4xl font-heading mb-4 text-white hover:text-neon-green transition-colors duration-300">
-            <span className="relative inline-block group">
-              Technical Arsenal
-              <span className="absolute -inset-1 bg-neon-green/20 blur opacity-30 rounded-lg group-hover:opacity-60 transition-opacity duration-300"></span>
-            </span>
-          </h2>
-          <div className="w-12 h-0.5 bg-neon-green mx-auto mb-6 hover:w-24 transition-all duration-300"></div>
-          <p className="text-gray-300 max-w-2xl mx-auto">
-            Tools and technologies I've mastered during my cosmic journey
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {[...technologies, ...tools].map((skill, index) => (
-            <SkillItem
-              key={index}
-              name={skill.name}
-              level={skill.level}
-              color={skill.color}
-            />
-          ))}
-        </div>
-
-        <div className="mt-12">
-          <h3 className="text-xl font-heading mb-8 text-white text-center hover:text-neon-blue transition-colors duration-300">
-            Additional Technologies
-          </h3>
-          <motion.div
-            className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ staggerChildren: 0.1 }}
-          >
-            {otherSkills.map((skill, index) => (
-              <motion.div
-                key={index}
-                className={`px-4 py-2 rounded-full border backdrop-blur-sm cursor-pointer
-                  ${skill.color === 'blue'
-                    ? 'border-neon-blue/30 hover:border-neon-blue hover:text-neon-blue hover:shadow-lg hover:shadow-neon-blue/20'
-                    : skill.color === 'pink'
-                      ? 'border-neon-pink/30 hover:border-neon-pink hover:text-neon-pink hover:shadow-lg hover:shadow-neon-pink/20'
-                      : 'border-neon-green/30 hover:border-neon-green hover:text-neon-green hover:shadow-lg hover:shadow-neon-green/20'
-                  } transition-all duration-300`}
-                whileHover={{ scale: 1.05, y: -2 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
+        <div className="flex flex-col md:flex-row items-start md:items-stretch gap-10 md:gap-16">
+          {/* Left: Icon Cloud */}
+          <div className="flex-1 flex items-center md:justify-start justify-center md:pl-0 pl-0">
+            <div className="w-full max-w-[560px] md:max-w-[720px] h-[400px] md:h-[640px] flex items-center md:justify-start justify-center md:-ml-16 lg:-ml-24 xl:-ml-32">
+              <IconCloudDemo />
+            </div>
+          </div>
+          {/* Right: Skills Content */}
+          <div className="flex-[2] flex flex-col justify-center">
+            <motion.div
+              className="mb-12 text-center md:text-left"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-sans mb-4 text-white hover:text-neon-green transition-colors duration-300">
+                <span className="relative inline-block group">
+                  Technical Arsenal
+                  <span className="absolute -inset-1 bg-neon-green/20 blur opacity-30 rounded-lg group-hover:opacity-60 transition-opacity duration-300"></span>
+                </span>
+              </h2>
+              <div className="w-12 h-0.5 bg-neon-green md:ml-0 mx-auto mb-6 hover:w-24 transition-all duration-300"></div>
+              <p className="text-gray-300 max-w-2xl md:mx-0 mx-auto">
+                Tools and technologies I've mastered during my cosmic journey
+              </p>
+            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[...technologies, ...tools].map((skill, index) => (
+                <SkillItem
+                  key={index}
+                  name={skill.name}
+                  level={skill.level}
+                  color={skill.color}
+                />
+              ))}
+            </div>
+            <div className="mt-12">
+              <h3 className="text-xl font-sans mb-8 text-white md:text-left text-center hover:text-neon-blue transition-colors duration-300">
+                Additional Technologies
+              </h3>
+              <div
+                className="flex flex-wrap md:justify-start justify-center gap-3 max-w-3xl md:mx-0 mx-auto"
               >
-                <span className="text-sm font-medium">{skill.name}</span>
-              </motion.div>
-            ))}
-          </motion.div>
+                {otherSkills.map((skill, index) => (
+                  <div
+                    key={index}
+                    className={`px-4 py-2 rounded-full border backdrop-blur-sm cursor-pointer
+                      ${skill.color === 'blue'
+                        ? 'border-neon-blue/30 hover:border-neon-blue hover:text-neon-blue hover:shadow-lg hover:shadow-neon-blue/20'
+                        : skill.color === 'pink'
+                          ? 'border-neon-pink/30 hover:border-neon-pink hover:text-neon-pink hover:shadow-lg hover:shadow-neon-pink/20'
+                          : 'border-neon-green/30 hover:border-neon-green hover:text-neon-green hover:shadow-lg hover:shadow-neon-green/20'
+                      } transition-all duration-300`}
+                  >
+                    <span className="text-sm font-medium">{skill.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

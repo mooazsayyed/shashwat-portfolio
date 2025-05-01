@@ -3,6 +3,7 @@ import { ChevronDown } from 'lucide-react';
 import GlitchText from './GlitchText';
 import TypewriterText from './TypewriterText';
 import NeonButton from './NeonButton';
+import { Meteors } from './magicui/meteors';
 
 const HeroSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -48,9 +49,16 @@ const HeroSection: React.FC = () => {
       ref={sectionRef}
       className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden"
     >
+      {/* Meteors background effect */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+        <div className="relative overflow-hidden h-full w-full">
+          <Meteors />
+          {/* <div style={{background: 'red', width: 100, height: 100, position: 'absolute', top: 0, left: 0, zIndex: 1000}}></div> */}
+        </div>
+      </div>
       <div className="container mx-auto text-center z-10">
         <div className="mb-4">
-          <GlitchText className="text-4xl md:text-6xl font-heading mb-4">
+          <GlitchText className="text-4xl md:text-6xl font-crazy mb-4">
             🌌 Hello, I'm Shashwat Agarwal
           </GlitchText>
 
